@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.example.demo.impl.DefaultAddition;
 
 class AddTestCase {
+	
 
 	@Test
 	void addTest1() {
@@ -25,4 +26,6 @@ class AddTestCase {
 		AddInterface add = new DefaultAddition();
 		assertEquals(2, add.add(1, 1));
 	}
+	
+		
 }
