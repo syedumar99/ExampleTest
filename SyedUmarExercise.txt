@@ -1,0 +1,89 @@
+MongoDB Exercise - SYED UMAR(22806)
+
+1. Open the command prompt and enable the MongoDB.
+2. Open the command prompt again and give mongo command.
+3. Open the restaurants file location and import the restaurants.json file with any collection name (here I have used books).
+
+The queries are as follows:
+
+Q1. Write a MongoDB query to display all the documents in the collection restaurants.
+
+>> db.books.find( ).pretty( )
+
+Q2. Write a MongoDB query to display the fields restaurant_id, name, borough and cuisine for all 
+       the documents in the collection restaurant.
+
+>> db.books.find({},{"restaurant_id" : 1,"name":1,"borough":1,"cuisine" :1}).pretty( )
+
+Q3. Write a MongoDB query to display the fields restaurant_id, name, borough and cuisine, but
+exclude the field _id for all the documents in the collection restaurant.
+
+>> db.books.find({},{"restaurant_id" : 1,"name":1,"borough":1,"cuisine" :1,"_id":0}).pretty( )
+
+Q4. Write a MongoDB query to display the fields restaurant_id, name, borough and zip code, but
+       exclude the field _id for all the documents in the collection restaurant.
+
+>> db.books.find({},{"restaurant_id" : 1,"name":1,"borough":1,"address.zipcode" :1,"_id":0}).pretty( )
+
+Q5. Write a MongoDB query to display all the restaurant which is in the borough Bronx.
+
+>> db.books.find({"borough": "Bronx"}).pretty( )
+
+Q6. Write a MongoDB query to display the first 5 restaurants which is in the borough Bronx.
+
+>> db.books.find({"borough": "Bronx"}).limit(5).pretty( )
+
+Q7. Write a MongoDB query to display the next 5 restaurants after skipping first 5 which are in the
+       borough Bronx.
+
+>> db.books.find({"borough": "Bronx"}).skip(5).limit(5).pretty( )
+
+Q8. Write a MongoDB query to find the restaurants who achieved a score more than 90.
+
+>> db.books.find({grades : { $elemMatch:{"score":{$gt : 90}}}}).pretty( )
+
+Q9. Write a MongoDB query to find the restaurants that achieved a score, more than 80 but less
+       than 100.
+
+>> db.books.find({grades : { $elemMatch:{"score":{$gt : 80 , $lt :100}}}}).pretty( )
+
+Q10. Write a MongoDB query to find the restaurants which locate in latitude value less than -
+        95.754168.
+
+>> db.books.find({"address.coord" : {$lt : -95.754168}}).pretty( )
+
+Q11. Write a MongoDB query to find the restaurants that do not prepare any cuisine of 'American'
+        and their grade score more than 70 and latitude less than -65.754168.
+
+>> db.books.find({$and:[{"cuisine" : {$ne :"American "}},{"grades.score" : {$gt : 70}},{"address.coord" : {$lt : -65.754168}}]}).pretty( )
+
+Q12. Write a MongoDB query to find the restaurants which do not prepare any cuisine of 'American'
+         and achieved a score more than 70 and located in the longitude less than -65.754168.
+
+>> db.books.find({"cuisine" : {$ne : "American "},"grades.score" :{$gt: 70},"address.coord" : {$lt : -65.754168}}).pretty( )
+
+Q13. Write a MongoDB query to find the restaurants which do not prepare any cuisine of 'American '
+         and achieved a grade point 'A' not belongs to the borough Brooklyn. The document must be
+         displayed according to the cuisine in descending order.
+
+>> db.books.find( {"cuisine" : {$ne : "American "},"grades.grade" :"A","borough": {$ne : "Brooklyn"}}).sort({"cuisine":-1}).pretty( )
+
+Q14. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those
+         restaurants which contain 'Wil' as first three letters for its name.
+
+>> db.books.find({name: /^Wil/},{"restaurant_id" : 1,"name":1,"borough":1,"cuisine" :1}).pretty( )
+
+Q15. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those
+         restaurants which contain 'ces' as last three letters for its name.
+
+>> db.books.find({name: /ces$/},{"restaurant_id" : 1,"name":1,"borough":1,"cuisine" :1}).pretty( )
+
+
+
+
+
+
+
+
+
+
