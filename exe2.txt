@@ -1,0 +1,8 @@
+db.books.find({"cuisine" : "American "}).count() 
+
+
+db.books.aggregate([{$group : {cuisine : "$cuisine", avg score: {$sum : 1}}}])
+
+var myMapFunction = function() {emit(this.cuisine);};
+var myReduceFunction = function(a) {return Array.sum(a);};
+db.books.mapReduce(myMapFunction,myReduceFunction,{ out: "NoOfCuisines" })
