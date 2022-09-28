@@ -1,0 +1,9 @@
+package com.sonata.Resource;
+
+import com.sonata.models.Movie;
+
+public class MovieResource {
+	public Movie getMovieInfo() {
+		
+	}
+}

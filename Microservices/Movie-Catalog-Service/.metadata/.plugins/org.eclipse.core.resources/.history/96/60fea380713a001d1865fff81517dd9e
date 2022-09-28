@@ -1,0 +1,21 @@
+package com.sonata.Resource;
+
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sonata.Model.CatalogItem;
+
+@RestController
+public class MovieCatalogResource {
+	
+	public List<CatalogItem> getCatalog(String userId) {
+		
+		return Collections.singletonList(
+				new CatalogItem("Transformers","Test",4)
+				);
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.sonata.MovieCatalog;
+
+public class MovieCatalogServiceApplication {
+
+}
